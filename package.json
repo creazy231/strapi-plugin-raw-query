@@ -27,5 +27,14 @@
     "node": ">=10.16.0 <=14.x.x",
     "npm": ">=6.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/creazy231/strapi-plugin-raw-query.git"
+  },
+  "bugs": {
+    "url": "https://github.com/creazy231/strapi-plugin-raw-query/issues"
+  },
+  "homepage": "https://github.com/creazy231/strapi-plugin-raw-query",
+  "keywords": ["raw", "query", "strapi", "plugin", "sql", "editor"],
   "license": "MIT"
 }
