@@ -10,7 +10,7 @@
 
 Raw Query allows you to send raw query strings to the database within [Strapi CMS](https://github.com/strapi/strapi) backend.
 
-##⏳ Installation
+## ⏳ Installation
 Install Strapi with this **Quickstart** command to create a Strapi project instantly:
 
 - Use **yarn** to initialize a new Strapi project (recommended). [How to install yarn](https://yarnpkg.com/lang/en/docs/install/)
@@ -59,7 +59,7 @@ npm run develop --watch-admin
 
 The **Raw Query** plugin should appear in the Plugins section of Strapi sidebar after you run app again.
 
-##🖐 Requirements
+## 🖐 Requirements
 
 **Supported Strapi versions**:
 
