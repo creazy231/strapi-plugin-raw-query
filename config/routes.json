@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/execute",
+      "handler": "raw-query.execute",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
