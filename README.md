@@ -3,6 +3,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/creazy231/strapi-plugin-raw-query/graphs/commit-activity)
 [![Maintaner](https://img.shields.io/badge/maintainer-creazy231-blue)](https://github.com/creazy231)
 [![GitHub release](https://img.shields.io/github/release/creazy231/strapi-plugin-raw-query.svg)](https://github.com/creazy231/strapi-plugin-raw-query/releases/)
+[![GitHub release](https://img.shields.io/npm/v/strapi-plugin-raw-query.svg?style=plastic)](https://www.npmjs.org/package/strapi-plugin-raw-query)
 [![Github all releases](https://img.shields.io/github/downloads/creazy231/strapi-plugin-raw-query/total.svg)](https://GitHub.com/creazy231/strapi-plugin-raw-query/releases/)
 [![GitHub forks](https://img.shields.io/github/forks/creazy231/strapi-plugin-raw-query.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/creazy231/strapi-plugin-raw-query/network/)
 [![GitHub stars](https://img.shields.io/github/stars/creazy231/strapi-plugin-raw-query.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/creazy231/strapi-plugin-raw-query/stargazers/)
