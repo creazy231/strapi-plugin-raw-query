@@ -13,7 +13,7 @@ import getTrad from "../../utils/getTrad";
 
 import {Button, InputSelect, PluginHeader, request} from "strapi-helper-plugin";
 import Editor from "@monaco-editor/react";
-import { JsonToTable } from "react-json-to-table";
+import {JsonToTable} from "react-json-to-table";
 
 class HomePage extends Component {
   constructor(props) {
@@ -27,12 +27,18 @@ class HomePage extends Component {
   }
 
   onMount = (editor, monaco) => {
-    console.log('onMount', editor);
+    const code = window.localStorage.getItem(`${pluginId}_code`);
+    if (code && code.length) {
+      this.setState({
+        code: code,
+      });
+      editor.setValue(code);
+    }
     editor.focus();
   }
 
   onChange = (newValue, e) => {
-    console.log('onChange', newValue, e);
+    window.localStorage.setItem(`${pluginId}_code`, newValue);
     this.setState({
       code: newValue,
     });
@@ -76,7 +82,7 @@ class HomePage extends Component {
       table = this.state.tableData.map(data => {
         if (data.result.length) {
           return (
-            <div style={{margin: '24px 0', overflow:'auto'}}>
+            <div style={{margin: '24px 0', overflow: 'auto'}}>
               <p><b>Query:</b><br/><code>{data.query};</code></p>
               <JsonToTable
                 json={data.result}
@@ -85,7 +91,7 @@ class HomePage extends Component {
           )
         } else {
           return (
-            <div style={{margin: '24px 0', textAlign:'center'}}>
+            <div style={{margin: '24px 0', textAlign: 'center'}}>
               <p><b>Query:</b><br/><code>{data.query};</code></p>
               <p>No data to display</p>
             </div>
