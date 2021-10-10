@@ -14,6 +14,9 @@ Raw Query allows you to send raw query strings to the database within [Strapi CM
 <img src="https://raw.githubusercontent.com/creazy231/strapi-plugin-raw-query/main/public/assets/preview.png" alt="Strapi Plugin - Raw Query" />
 
 
+# 🚀 Strapi v4
+For Strapi v4 use this branch: [beta-v4](https://github.com/creazy231/strapi-plugin-raw-query/tree/beta-v4)
+
 ## ⏳ Installation
 Install Strapi with this **Quickstart** command to create a Strapi project instantly:
 
