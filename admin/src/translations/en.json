@@ -1,3 +1,5 @@
 {
+  "notification.info.execute.success": "Query successfully executed.",
+  "notification.info.execute.error": "There was an error executing your query.",
   "button.execute": "Execute"
 }

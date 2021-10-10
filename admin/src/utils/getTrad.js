@@ -1,4 +1,4 @@
-const pluginId = require('../pluginId');
+import pluginId from '../pluginId';
 
 const getTrad = id => `${pluginId}.${id}`;
 

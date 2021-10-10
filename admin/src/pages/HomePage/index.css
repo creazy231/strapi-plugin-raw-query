@@ -1,0 +1,64 @@
+.raw-query {
+  max-width: 80vw;
+}
+
+.raw-query_query {
+  margin: 24px 0;
+}
+
+.raw-query_query p b {
+  font-weight: bold;
+}
+
+.raw-query_query .code {
+  margin: 12px 0;
+}
+
+.raw-query_query .code code {
+  margin: 12px 0;
+}
+
+.raw-query_query pre {
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-left: 3px solid #4945ff;
+  color: #666;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 0.5em 1em;
+  display: block;
+  word-wrap: break-word;
+}
+
+.raw-query_query .json-to-table {
+  overflow: auto;
+}
+
+.raw-query_query .json-to-table tbody > tr:first-of-type {
+  font-weight: bold;
+}
+
+.raw-query_query .json-to-table td {
+  font-size: 14px;
+  white-space: nowrap;
+  padding: 1em;
+}
+
+.raw-query .raw-query_execute {
+  margin-top: 1em;
+}
+
+.raw-query .monaco-editor {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.raw-query small {
+  font-size: .8em;
+  float: right;
+}
