@@ -5,18 +5,18 @@
  */
 import './index.css';
 
-import React, {memo, useEffect, useState} from 'react';
-// import PropTypes from 'prop-types';
-import {ContentLayout, HeaderLayout} from '@strapi/parts/Layout';
+import { join } from 'path';
+import React, {memo, useState} from 'react';
+import {ContentLayout, HeaderLayout} from '@strapi/design-system/Layout';
 import pluginId from '../../pluginId';
 import getTrad from '../../utils/getTrad';
 import {request, useNotification} from '@strapi/helper-plugin';
-import {Divider, Button, Box, Table, Thead, Tbody, TableLabel, Tr, Th, Td, Text} from '@strapi/parts';
+import {Divider, Button, Box, Table, Thead, Tbody, TableLabel, Tr, Th, Td, Text} from '@strapi/design-system';
 
-import Editor from "@monaco-editor/react";
-import {JsonToTable} from "react-json-to-table";
-import isEqual from "lodash/isEqual";
-import upperFirst from "lodash/upperFirst";
+import {UnControlled as CodeMirror} from 'react-codemirror2';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/dracula.css';
+require('codemirror/mode/sql/sql');
 
 import * as pkg from '../../../../package.json';
 
@@ -33,7 +33,7 @@ const HomePage = () => {
   const [tableData, setTableData] = useState([]);
   const [executing, setExecuting] = useState(false);
 
-  const onMount = (editor, monaco) => {
+  const editorDidMount = (editor, monaco) => {
     const code = window.localStorage.getItem(`${pluginId}_code`);
     if (code && code.length) {
       setCode(code);
@@ -42,9 +42,9 @@ const HomePage = () => {
     editor.focus();
   }
 
-  const onChange = (newValue, e) => {
-    window.localStorage.setItem(`${pluginId}_code`, newValue);
-    setCode(newValue);
+  const onChange = (editor, data, value) => {
+    window.localStorage.setItem(`${pluginId}_code`, value);
+    setCode(value);
   }
 
   const executeQuery = async () => {
@@ -110,13 +110,15 @@ const HomePage = () => {
           subtitle={pkg.strapi.description}
         />
         <ContentLayout>
-          <Editor
+          <CodeMirror
             height="200px"
-            theme="vs-dark"
-            defaultLanguage="sql"
-            options={{fontSize: '14px'}}
-            defaultValue={code}
-            onMount={onMount}
+            value={code}
+            options={{
+              mode: 'sql',
+              theme: 'dracula',
+              lineNumbers: true
+            }}
+            editorDidMount={editorDidMount}
             onChange={onChange}
           />
           <Button

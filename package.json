@@ -1,6 +1,6 @@
 {
   "name": "@strapi/plugin-raw-query",
-  "version": "4.0.0-beta.2",
+  "version": "1.0.0",
   "description": "Raw Query allows you to send raw query strings to the database.",
   "strapi": {
     "name": "Raw Query",
@@ -9,7 +9,8 @@
     "kind": "plugin"
   },
   "dependencies": {
-    "@monaco-editor/react": "^4.2.2",
+    "codemirror": "^5.65.1",
+    "react-codemirror2": "^7.2.1",
     "react-json-to-table": "^0.1.7"
   },
   "author": {
@@ -25,7 +26,7 @@
     }
   ],
   "engines": {
-    "node": ">=12.x. <=16.x.x",
+    "node": ">=12.x.x <=16.x.x",
     "npm": ">=6.0.0"
   },
   "repository": {
@@ -36,6 +37,13 @@
     "url": "https://github.com/creazy231/strapi-plugin-raw-query/issues"
   },
   "homepage": "https://github.com/creazy231/strapi-plugin-raw-query",
-  "keywords": ["raw", "query", "strapi", "plugin", "sql", "editor"],
+  "keywords": [
+    "raw",
+    "query",
+    "strapi",
+    "plugin",
+    "sql",
+    "editor"
+  ],
   "license": "MIT"
 }

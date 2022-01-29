@@ -4,14 +4,14 @@ import pluginId from './pluginId';
 import Initializer from './components/Initializer';
 
 const pluginDescription = pluginPkg.strapi.description || pluginPkg.description;
-const icon = pluginPkg.strapi.icon;
+import IconCode from '@strapi/icons/Code';
 const name = pluginPkg.strapi.name;
 
 export default {
   register(app) {
     app.addMenuLink({
       to: `/plugins/${pluginId}`,
-      icon,
+      icon: IconCode,
       intlLabel: {
         id: `${pluginId}.plugin.name`,
         defaultMessage: name,
@@ -31,7 +31,7 @@ export default {
     });
     app.registerPlugin({
       description: pluginDescription,
-      icon,
+      icon: IconCode,
       id: pluginId,
       initializer: Initializer,
       isReady: false,
