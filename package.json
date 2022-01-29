@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Raw Query allows you to send raw query strings to the database.",
   "strapi": {
-    "name": "Raw Query",
+    "name": "raw-query",
+    "displayName": "Raw Query",
     "icon": "plug",
     "description": "Raw Query allows you to send raw query strings to the database.",
     "kind": "plugin"

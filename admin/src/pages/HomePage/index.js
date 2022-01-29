@@ -106,7 +106,7 @@ const HomePage = () => {
       <div className={'raw-query'}>
         <HeaderLayout
           id="title"
-          title={pkg.strapi.name}
+          title={pkg.strapi.displayName}
           subtitle={pkg.strapi.description}
         />
         <ContentLayout>
