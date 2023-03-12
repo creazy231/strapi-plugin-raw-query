@@ -1,3 +1,6 @@
+/*@import "codemirror/lib/codemirror.css";*/
+/*@import "codemirror/theme/dracula.css";*/
+
 .raw-query {
   max-width: 80vw;
 }

@@ -4,8 +4,9 @@
  *
  */
 import './index.css';
+import { dracula } from '@uiw/codemirror-theme-dracula';
 
-import { join } from 'path';
+
 import React, {memo, useState} from 'react';
 import {ContentLayout, HeaderLayout} from '@strapi/design-system/Layout';
 import pluginId from '../../pluginId';
@@ -13,10 +14,8 @@ import getTrad from '../../utils/getTrad';
 import {request, useNotification} from '@strapi/helper-plugin';
 import {Divider, Button, Box, Table, Thead, Tbody, TableLabel, Tr, Th, Td, Text} from '@strapi/design-system';
 
-import {UnControlled as CodeMirror} from 'react-codemirror2';
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/dracula.css';
-require('codemirror/mode/sql/sql');
+import CodeMirror from '@uiw/react-codemirror';
+import { langs } from '@uiw/codemirror-extensions-langs';
 
 import * as pkg from '../../../../package.json';
 
@@ -111,6 +110,8 @@ const HomePage = () => {
         />
         <ContentLayout>
           <CodeMirror
+            extensions={[langs.sql()]}
+            theme={dracula}
             height="200px"
             value={code}
             options={{
@@ -130,8 +131,7 @@ const HomePage = () => {
             Execute
           </Button>
           <div style={{overflow: 'auto', margin: '24px 0px'}}>
-            {tableData.length ? tableData.map((data, index) => {
-              console.log(data.result);
+            {tableData.length > 0 ? tableData.map((data, index) => {
               if (data.result.length) {
                 return (
                   <div key={'table_' + index} className={'raw-query_query'}>
@@ -147,7 +147,7 @@ const HomePage = () => {
                               getTableHeaders(data.result[0]).map((th, index) => {
                                 return (
                                   <Th style={{padding: '16px'}} key={'th_' + index}>
-                                    <TableLabel>{th}</TableLabel>
+                                    {th}
                                   </Th>
                                 )
                               })
@@ -163,7 +163,7 @@ const HomePage = () => {
                                     tr.map((td, index) => {
                                       return (
                                         <Td style={{padding: '16px'}} key={'td_' + index}>
-                                          <Text>{td}</Text>
+                                          {td}
                                         </Td>
                                       )
                                     })

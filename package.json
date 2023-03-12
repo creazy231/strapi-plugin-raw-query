@@ -10,8 +10,9 @@
     "kind": "plugin"
   },
   "dependencies": {
-    "codemirror": "^5.65.1",
-    "react-codemirror2": "^7.2.1",
+    "@uiw/codemirror-extensions-langs": "^4.19.9",
+    "@uiw/codemirror-theme-dracula": "^4.19.9",
+    "@uiw/react-codemirror": "^4.19.9",
     "react-json-to-table": "^0.1.7"
   },
   "author": {
