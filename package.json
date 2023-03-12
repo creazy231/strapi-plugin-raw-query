@@ -1,6 +1,6 @@
 {
   "name": "strapi-plugin-raw-query",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Raw Query allows you to send raw query strings to the database.",
   "strapi": {
     "name": "raw-query",
@@ -13,6 +13,7 @@
     "@uiw/codemirror-extensions-langs": "4.19.9",
     "@uiw/codemirror-theme-dracula": "4.19.9",
     "@uiw/react-codemirror": "4.19.9",
+    "codemirror": "^5.65.12",
     "react-json-to-table": "0.1.7"
   },
   "author": {
