@@ -4,22 +4,22 @@
  *
  */
 import './index.css';
-import { dracula } from '@uiw/codemirror-theme-dracula';
+import {dracula} from '@uiw/codemirror-theme-dracula';
 
 
 import React, {memo, useState} from 'react';
 import {ContentLayout, HeaderLayout} from '@strapi/design-system/Layout';
-import pluginId from '../../pluginId';
-import getTrad from '../../utils/getTrad';
 import {request, useNotification} from '@strapi/helper-plugin';
-import {Divider, Button, Box, Table, Thead, Tbody, TableLabel, Tr, Th, Td, Text} from '@strapi/design-system';
+import {Divider, Button, Box, Table, Thead, Tbody, Tr, Th, Td} from '@strapi/design-system';
 
 import CodeMirror from '@uiw/react-codemirror';
-import { langs } from '@uiw/codemirror-extensions-langs';
+import {langs} from '@uiw/codemirror-extensions-langs';
+import getTrad from '../../utils/getTrad';
+import pluginId from '../../pluginId';
 
 import * as pkg from '../../../../package.json';
 
-const HomePage = () => {
+function HomePage() {
 
   const toggleNotification = useNotification();
 
@@ -34,6 +34,7 @@ const HomePage = () => {
 
   const editorDidMount = (editor, monaco) => {
     const code = window.localStorage.getItem(`${pluginId}_code`);
+
     if (code && code.length) {
       setCode(code);
       editor.setValue(code);
@@ -41,7 +42,7 @@ const HomePage = () => {
     editor.focus();
   }
 
-  const onChange = (editor, data, value) => {
+  const onChange = (value) => {
     window.localStorage.setItem(`${pluginId}_code`, value);
     setCode(value);
   }
@@ -84,6 +85,7 @@ const HomePage = () => {
     for (const dataKey in data) {
       headers.push(dataKey);
     }
+
     return headers;
   }
 
@@ -97,105 +99,105 @@ const HomePage = () => {
       rows.push(r);
     });
     console.log(rows);
+
     return rows;
   }
 
   return (
-    <>
-      <div className={'raw-query'}>
-        <HeaderLayout
-          id="title"
-          title={pkg.strapi.displayName}
-          subtitle={pkg.strapi.description}
+    <div className="raw-query">
+      <HeaderLayout
+        id="title"
+        title={pkg.strapi.displayName}
+        subtitle={pkg.strapi.description}
+      />
+      <ContentLayout>
+        <CodeMirror
+          extensions={[langs.sql()]}
+          theme={dracula}
+          height="200px"
+          value={code}
+          options={{
+            mode: 'sql',
+            theme: 'dracula',
+            lineNumbers: true
+          }}
+          editorDidMount={editorDidMount}
+          onChange={onChange}
         />
-        <ContentLayout>
-          <CodeMirror
-            extensions={[langs.sql()]}
-            theme={dracula}
-            height="200px"
-            value={code}
-            options={{
-              mode: 'sql',
-              theme: 'dracula',
-              lineNumbers: true
-            }}
-            editorDidMount={editorDidMount}
-            onChange={onChange}
-          />
-          <Button
-            className="raw-query_execute"
-            onClick={executeQuery}
-            loading={executing}
-            disabled={executing}
-          >
-            Execute
-          </Button>
-          <div style={{overflow: 'auto', margin: '24px 0px'}}>
-            {tableData.length > 0 ? tableData.map((data, index) => {
-              if (data.result.length) {
-                return (
-                  <div key={'table_' + index} className={'raw-query_query'}>
-                    <p><b>Query:</b><small>{data.result.length} Results</small></p>
-                    <div className="code">
-                      <pre>{data.query};</pre>
-                    </div>
-                    <Box>
-                      <Table colCount={getTableHeaders(data.result).length} rowCount={data.result.length}>
-                        <Thead>
-                          <Tr>
-                            {
-                              getTableHeaders(data.result[0]).map((th, index) => {
-                                return (
-                                  <Th style={{padding: '16px'}} key={'th_' + index}>
-                                    {th}
-                                  </Th>
-                                )
-                              })
-                            }
-                          </Tr>
-                        </Thead>
-                        <Tbody>
+        <Button
+          className="raw-query_execute"
+          onClick={executeQuery}
+          loading={executing}
+          disabled={executing}
+        >
+          Execute
+        </Button>
+        <div style={{overflow: 'auto', margin: '24px 0px'}}>
+          {tableData.length > 0 ? tableData.map((data, index) => {
+            if (data.result.length) {
+              return (
+                <div key={`table_${index}`} className="raw-query_query">
+                  <p><b>Query:</b><small>{data.result.length} Results</small></p>
+                  <div className="code">
+                    <pre>{data.query};</pre>
+                  </div>
+                  <Box>
+                    <Table colCount={getTableHeaders(data.result).length} rowCount={data.result.length}>
+                      <Thead>
+                        <Tr>
                           {
-                            getTableRows(data.result).map((tr, index) => {
+                            getTableHeaders(data.result[0]).map((th, index) => {
                               return (
-                                <Tr key={'tr_' + index}>
-                                  {
-                                    tr.map((td, index) => {
-                                      return (
-                                        <Td style={{padding: '16px'}} key={'td_' + index}>
-                                          {td}
-                                        </Td>
-                                      )
-                                    })
-                                  }
-                                </Tr>
+                                <Th style={{padding: '16px'}} key={`th_${index}`}>
+                                  {th}
+                                </Th>
                               )
                             })
                           }
-                        </Tbody>
-                      </Table>
-                    </Box>
-                    <Divider/>
-                  </div>
-                )
-              } else {
-                return (
-                  <div className={'raw-query_query'}>
-                    <p><b>Query:</b><small>{data.result.length} Results</small></p>
-                    <div className="code">
-                      <pre>{data.query};</pre>
-                    </div>
-                    <p>No results to display.</p>
-                    <Divider/>
-                  </div>
-                )
-              }
-            }) : ''}
-          </div>
-        </ContentLayout>
-      </div>
-    </>
+                        </Tr>
+                      </Thead>
+                      <Tbody>
+                        {
+                          getTableRows(data.result).map((tr, index) => {
+                            return (
+                              <Tr key={`tr_${index}`}>
+                                {
+                                  tr.map((td, index) => {
+                                    return (
+                                      <Td style={{padding: '16px'}} key={`td_${index}`}>
+                                        {td}
+                                      </Td>
+                                    )
+                                  })
+                                }
+                              </Tr>
+                            )
+                          })
+                        }
+                      </Tbody>
+                    </Table>
+                  </Box>
+                  <Divider/>
+                </div>
+              )
+            }
+
+            return (
+              <div key={`table_${index}`} className="raw-query_query">
+                <p><b>Query:</b><small>{data.result.length} Results</small></p>
+                <div className="code">
+                  <pre>{data.query};</pre>
+                </div>
+                <p>No results to display.</p>
+                <Divider/>
+              </div>
+            )
+
+          }) : ''}
+        </div>
+      </ContentLayout>
+    </div>
   );
-};
+}
 
 export default memo(HomePage);
