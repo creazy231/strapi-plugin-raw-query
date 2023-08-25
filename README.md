@@ -92,11 +92,11 @@ npm i strapi-plugin-raw-query@0.0.3
 
 **Supported Strapi versions**:
 
-- Strapi: >= 4.0.x
+- Strapi: >= 4.x.x
 
 
 **Supported Node / NPM versions**:
-- Node: >= 12.x.x <= 16.x.x
+- Node: >= 12.x.x <= 18.x.x
 - NPM: >= 6.0.0
 
 
