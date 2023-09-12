@@ -54,6 +54,7 @@
 
 .raw-query .raw-query_execute {
   margin-top: 1em;
+  margin-right: 1em;
 }
 
 .raw-query .react-codemirror2 {
@@ -64,4 +65,9 @@
 .raw-query small {
   font-size: .8em;
   float: right;
+}
+
+.buttons-container{
+  display: flex;
+  justify-content: flex-start;;
 }
