@@ -7,7 +7,7 @@ import './index.css';
 import {dracula} from '@uiw/codemirror-theme-dracula';
 
 
-import React, {memo, useState, useEffect} from 'react';
+import React, {memo, useState} from 'react';
 import {ContentLayout, HeaderLayout} from '@strapi/design-system/Layout';
 import {request, useNotification} from '@strapi/helper-plugin';
 import {Divider, Button, Box, Table, Thead, Tbody, Tr, Th, Td} from '@strapi/design-system';
