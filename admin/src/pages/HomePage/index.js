@@ -162,6 +162,7 @@ function HomePage() {
           <Button
             className="raw-query_execute"
             onClick={handleDownloadCSV}
+            disabled={ tableData.length >=1 ? false : true }
           >
             Export CSV
           </Button>
