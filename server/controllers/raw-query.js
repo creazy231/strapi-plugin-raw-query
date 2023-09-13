@@ -2,25 +2,20 @@
 
 module.exports = {
   async execute(ctx) {
-    const {code} = ctx.request.body;
+    const {code: query} = ctx.request.body;
 
-    const queries = code.replace(/^\s+/gm, "").split(';').map(query => query.replace(/\r?\n|\r/, "")).slice(0, -1);
+    let result = await strapi.db.connection.raw(query).catch(err => err.message);
 
-    const results = [];
-    for (const query of queries) {
-      let result = await strapi.db.connection.raw(`${query};`).catch(err => err.message);
-
-      if (typeof result === 'string') {
-        result = [{'⚠ ERROR': result}];
-      }
-
-      results.push({
-        query, result,
-      });
+    if (typeof result === 'string') {
+      result = [{'⚠ ERROR': result}];
     }
 
     ctx.send({
-      message: 'ok', results,
+      message: 'ok',
+      response: {
+        query,
+        result,
+      }
     });
   },
 };

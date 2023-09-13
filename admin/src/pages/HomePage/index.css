@@ -5,12 +5,24 @@
   max-width: 80vw;
 }
 
-.raw-query_query {
-  margin: 24px 0;
+.raw-query table {
+  font-size: 0.8rem;
 }
 
-.raw-query_query p b {
-  font-weight: bold;
+.raw-query .cm-theme {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.raw-query_query {
+  margin: 24px 0;
+  overflow: hidden;
+}
+
+.raw-query_query p {
+  font-size: small;
+  margin-bottom: 1rem;
+  text-align: right;
 }
 
 .raw-query_query .code {
@@ -54,6 +66,7 @@
 
 .raw-query .raw-query_execute {
   margin-top: 1em;
+  margin-right: 1em;
 }
 
 .raw-query .react-codemirror2 {
@@ -64,4 +77,8 @@
 .raw-query small {
   font-size: .8em;
   float: right;
+}
+
+.buttons-container{
+  display: flex;
 }
