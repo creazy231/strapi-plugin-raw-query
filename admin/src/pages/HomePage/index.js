@@ -124,16 +124,28 @@ function HomePage() {
     const fileName = `export_query_strapi_sql_${formattedDate}.csv`;
 
     // Generate CSV content
-    const csvContent = `data:text/csv;charset=utf-8,${headersCsv.join(',')}\n${rowsCsv.map((e) => e.join(',')).join('\n')}`;
-    const encodedUri = encodeURI(csvContent);
+    const csvHeader = headersCsv.join(',');
+    const csvRows = rowsCsv.map(row => row.join(',')).join('\n');
+    const csvContent = `${csvHeader}\n${csvRows}`;
 
-    // Download the CSV
+    // Create a Blob object to keep special characters
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+
+    // Create a URL for the Blob
+    const url = window.URL.createObjectURL(blob);
+
+    // Create a link element for downloading
     const link = document.createElement('a');
-    link.setAttribute('href', encodedUri);
+    link.setAttribute('href', url);
     link.setAttribute('download', fileName);
+
+    // Add the link to the document and trigger the download
     document.body.appendChild(link);
     link.click();
+
+    // Cleanup
     document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   };
 
   return (
