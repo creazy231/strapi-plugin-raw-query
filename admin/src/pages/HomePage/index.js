@@ -70,7 +70,7 @@ function HomePage() {
         },
       });
       setTableData(response.response);
-      console.log(response.response);
+      console.log("Execute respons: ",response.response);
     } catch (err) {
       console.error(err);
       toggleNotification({
@@ -112,7 +112,7 @@ function HomePage() {
     let rowsCsv = [];
 
     if (tableData.result[0]?.length) {
-      const tableHeaders = getTableHeaders(tableData.result[0][0]);
+      const tableHeaders = getTableHeaders(tableData.result[0]);
       headersCsv = headersCsv.concat(tableHeaders);
       const tableRows = getTableRows(tableData.result[0]);
       rowsCsv = rowsCsv.concat(tableRows);
@@ -197,7 +197,7 @@ function HomePage() {
                   <Thead>
                     <Tr>
                       {
-                        getTableHeaders(tableData.result[0][0]).map((th, index) => {
+                        getTableHeaders(tableData.result[0]).map((th, index) => {
                           return (
                             <Th style={{ padding: "16px", fontWeight: "bold" }} key={`th_${index}`}>
                               {th}
@@ -209,7 +209,7 @@ function HomePage() {
                   </Thead>
                   <Tbody>
                     {
-                      getTableRows(tableData.result[0]).map((tr, index) => {
+                      getTableRows(tableData.result).map((tr, index) => {
                         return (
                           <Tr key={`tr_${index}`}>
                             {
