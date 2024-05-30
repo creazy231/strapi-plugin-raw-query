@@ -15,65 +15,35 @@ Raw Query allows you to send raw query strings to the database within [Strapi CM
 
 
 ## ⏳ Installation
-Install Strapi with this **Quickstart** command to create a Strapi project instantly:
 
-- Use **yarn** to initialize a new Strapi project (recommended). [How to install yarn](https://yarnpkg.com/lang/en/docs/install/)
+1.  Create plugins folder : 
+	```bash 
+	mkdir -p src/plugins
+	```
 
-```bash
-# with yarn
-yarn create strapi-app my-project --quickstart
+3.  Clone this repository to ```src/plugins``` : git clone [https://github.com/haidong2099/strapi-plugin-raw-query-custom.git](https://github.com/haidong2099/strapi-plugin-raw-query-custom.git)
+4.  Remove git of the plugin
+	```bash 
+	cd  src/plugins/strapi-plugin-raw-query-custom && rm -rdf .git
+	```
+6.  Add an entry inside ```./package.json```
+	```json
+	"name": "cms-PROJECTNAME",
+	"private": true,
 
-# with npm/npx
-npx create-strapi-app my-project --quickstart
-```
+	"workspaces": [
+	"./src/plugins/strapi-plugin-raw-query-custom"
+	],
+	```
+1.  Install  depedencies ```yarn install```
 
-_This command generates a brand new project with the default features (authentication, permissions, content management, content type builder & file upload). The **Quickstart** command installs Strapi using a **SQLite** database which is used for prototyping in development._
-
----
-
-- Add the `strapi-plugin-raw-query` plugin
-
-```bash
-yarn add strapi-plugin-raw-query@latest
-
-# or
-
-npm i strapi-plugin-raw-query@latest
-```
-
-- Enable the plugin
-
-```js
-// config/plugins.js
-
-module.exports = {
-  'raw-query': {
-    enabled: true,
-  },
-  // ...
-}
-
-```
-
-- After successful installation you've to build a fresh package of the Strapi backend:
-
-```bash
-yarn build && yarn develop
-
-# or
-
-npm run build && npm run develop
-```
-
-- or just run Strapi in the development mode with `--watch-admin` option:
-
-```bash
-yarn develop --watch-admin
-
-#or
-
-npm run develop --watch-admin
-```
+1.  Register plugin in ```./config/plugins.js```
+	```js
+	'raw-query': {
+		enabled: true,
+	},
+	```
+1.  yarn  ```build && yarn develop```
 
 The **Raw Query** plugin should appear in the Plugins section of Strapi sidebar after you run app again.
 
