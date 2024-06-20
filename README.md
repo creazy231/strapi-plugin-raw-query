@@ -1,15 +1,40 @@
-# Strapi Plugin - Raw Query
+<div align="center">
+  <h1>Strapi Plugin: Raw Query</h1>
 
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/creazy231/strapi-plugin-raw-query/graphs/commit-activity)
-[![Maintaner](https://img.shields.io/badge/maintainer-creazy231-blue)](https://github.com/creazy231)
-[![GitHub release](https://img.shields.io/github/release/creazy231/strapi-plugin-raw-query.svg)](https://github.com/creazy231/strapi-plugin-raw-query/releases/)
-[![NPM release](https://img.shields.io/npm/v/strapi-plugin-raw-query)](https://www.npmjs.org/package/strapi-plugin-raw-query)
-[![Github all releases](https://img.shields.io/npm/dt/strapi-plugin-raw-query)](https://GitHub.com/creazy231/strapi-plugin-raw-query/releases/)
-[![GitHub forks](https://img.shields.io/github/forks/creazy231/strapi-plugin-raw-query.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/creazy231/strapi-plugin-raw-query/network/)
-[![GitHub stars](https://img.shields.io/github/stars/creazy231/strapi-plugin-raw-query.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/creazy231/strapi-plugin-raw-query/stargazers/)
-[![GitHub watchers](https://img.shields.io/github/watchers/creazy231/strapi-plugin-raw-query.svg?style=social&label=Watch&maxAge=2592000)](https://GitHub.com/creazy231/strapi-plugin-raw-query/watchers/)
+  <p style="margin-top: 0;">Raw Query allows you to send raw query strings to the database within <a href="https://github.com/strapi/strapi">
+    Strapi CMS
+  </a> backend. That's it 🤷🏻‍♂️</p>
 
-Raw Query allows you to send raw query strings to the database within [Strapi CMS](https://github.com/strapi/strapi) backend. That's it 🤷🏻‍♂️
+  <p>
+    <a href="https://github.com/creazy231/strapi-plugin-raw-query/graphs/commit-activity">
+      <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" alt="Maintenance" />
+    </a>
+    <a href="https://github.com/creazy231">
+      <img src="https://img.shields.io/badge/maintainer-creazy231-blue" alt="Maintainer" />
+    </a>
+    <a href="https://github.com/creazy231/strapi-plugin-raw-query/releases/">
+      <img src="https://img.shields.io/github/release/creazy231/strapi-plugin-raw-query.svg" alt="GitHub release" />
+    </a>
+    <a href="https://www.npmjs.org/package/strapi-plugin-raw-query">
+      <img src="https://img.shields.io/npm/v/strapi-plugin-raw-query" alt="NPM release" />
+    </a>
+    <a href="https://GitHub.com/creazy231/strapi-plugin-raw-query/releases/">
+      <img src="https://img.shields.io/npm/dt/strapi-plugin-raw-query" alt="Github all releases" />
+    </a>
+    <a href="https://ko-fi.com/creazy231">
+      <img alt="Support me on Ko-fi" src="https://img.shields.io/badge/Support_me-on_Ko--fi_☕-43D7AA">
+    </a>
+    <a href="https://GitHub.com/creazy231/strapi-plugin-raw-query/network/">
+      <img src="https://img.shields.io/github/forks/creazy231/strapi-plugin-raw-query.svg?style=social&label=Fork&maxAge=2592000" alt="GitHub forks" />
+    </a>
+    <a href="https://GitHub.com/creazy231/strapi-plugin-raw-query/stargazers/">
+      <img src="https://img.shields.io/github/stars/creazy231/strapi-plugin-raw-query.svg?style=social&label=Star&maxAge=2592000" alt="GitHub stars" />
+    </a>
+    <a href="https://GitHub.com/creazy231/strapi-plugin-raw-query/watchers/">
+      <img src="https://img.shields.io/github/watchers/creazy231/strapi-plugin-raw-query.svg?style=social&label=Watch&maxAge=2592000" alt="GitHub watchers" />
+    </a>
+  </p>
+</div>
 
 <img src="https://raw.githubusercontent.com/creazy231/strapi-plugin-raw-query/main/public/assets/preview.jpeg" alt="Strapi Plugin - Raw Query" />
 
@@ -96,7 +121,7 @@ npm i strapi-plugin-raw-query@0.0.3
 
 
 **Supported Node / NPM versions**:
-- Node: >= 12.x.x <= 18.x.x
+- Node: >= 12.x.x <= 20.x.x
 - NPM: >= 6.0.0
 
 
@@ -110,6 +135,10 @@ Feel free to fork and make a Pull Request to this plugin project. All the input 
 
 Give a star if this project helped you.
 
+<a href="https://ko-fi.com/creazy231">
+  <img width="270px" src="https://storage.ko-fi.com/cdn/brandasset/kofi_button_stroke.png" alt="Support me on Ko-fi">
+</a>
+
 ## 🔗 Links
 
 - [NPM package](https://www.npmjs.com/package/strapi-plugin-raw-query)
@@ -117,6 +146,7 @@ Give a star if this project helped you.
 
 ## 📝 License
 
-[MIT License](LICENSE.md) Copyright (c) 2022 [Tobias Thiele](https://tobias-thiele.de/).
+MIT License Copyright (c) 2024 creazy231
+
 
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/creazy231/)
