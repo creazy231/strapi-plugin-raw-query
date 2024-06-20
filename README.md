@@ -1,4 +1,8 @@
 <div align="center">
+  <img
+  width="200px"
+  src="https://github.com/creazy231/strapi-plugin-raw-query/blob/main/logo-transparent-cropped.png?raw=true" />
+
   <h1>Strapi Plugin: Raw Query</h1>
 
   <p style="margin-top: 0;">Raw Query allows you to send raw query strings to the database within <a href="https://github.com/strapi/strapi">
