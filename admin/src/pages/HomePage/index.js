@@ -70,7 +70,6 @@ function HomePage() {
         },
       });
       setTableData(response.response);
-      console.log(response.response);
     } catch (err) {
       console.error(err);
       toggleNotification({
@@ -85,7 +84,6 @@ function HomePage() {
   };
 
   const getTableHeaders = (data) => {
-    console.log(data);
     const headers = [];
     for (const dataKey in data) {
       headers.push(dataKey);
@@ -111,12 +109,10 @@ function HomePage() {
     let headersCsv = [];
     let rowsCsv = [];
 
-    if (tableData.result[0]?.length) {
-      const tableHeaders = getTableHeaders(tableData.result[0][0]);
-      headersCsv = headersCsv.concat(tableHeaders);
-      const tableRows = getTableRows(tableData.result[0]);
-      rowsCsv = rowsCsv.concat(tableRows);
-    }
+    const tableHeaders = getTableHeaders(tableData.result[0]);
+    headersCsv = headersCsv.concat(tableHeaders);
+    const tableRows = getTableRows(tableData.result);
+    rowsCsv = rowsCsv.concat(tableRows);
 
     const today = new Date();
     const formattedDate = `${today.getDate()}-${today.getMonth()}-${today.getFullYear()}-${today.getHours()}h${today.getMinutes()}m${today.getSeconds()}`;
@@ -165,7 +161,6 @@ function HomePage() {
             theme: "dracula",
             lineNumbers: true,
           }}
-          editorDidMount={editorDidMount}
           onChange={onChange}
         />
         <div className="buttons-container">
@@ -182,52 +177,66 @@ function HomePage() {
           {tableData
             && <div className="raw-query_query">
               <Flex justifyContent="space-between" alignItems="center" paddingBottom={4}>
-                <Badge>{tableData.result[0].length} Result{tableData.result[0].length > 1 ? "s" : ""}</Badge>
+                {
+                  Array.isArray(tableData.result)
+                  && <Badge>{tableData.result?.length} Row{tableData.result[0].length > 1 ? "s" : ""}</Badge>
+                }
 
-                <Button
-                  variant="secondary"
-                  onClick={handleDownloadCSV}
-                  disabled={!tableData || !tableData.result[0]?.length}
-                >
-                  Export CSV
-                </Button>
+                {
+                  tableData.result?.changes
+                  && <Badge>{tableData.result.changes} Change{tableData.result.changes > 1 ? "s" : ""} were made</Badge>
+                }
+
+                {
+                  Array.isArray(tableData.result)
+                  && <Button
+                    variant="secondary"
+                    onClick={handleDownloadCSV}
+                    disabled={!tableData || !Array.isArray(tableData.result)}
+                  >
+                    Export CSV
+                  </Button>
+                }
               </Flex>
-              <Box>
-                <Table>
-                  <Thead>
-                    <Tr>
+              {
+                Array.isArray(tableData.result)
+                && <Box>
+                  <Table>
+                    <Thead>
+                      <Tr>
+                        {
+                          getTableHeaders(tableData.result[0]).map((th, index) => {
+                            return (
+                              <Th style={{ padding: "16px", fontWeight: "bold" }} key={`th_${index}`}>
+                                {th}
+                              </Th>
+                            );
+                          })
+                        }
+                      </Tr>
+                    </Thead>
+                    <Tbody>
                       {
-                        getTableHeaders(tableData.result[0][0]).map((th, index) => {
+                        getTableRows(tableData.result).map((tr, index) => {
                           return (
-                            <Th style={{ padding: "16px", fontWeight: "bold" }} key={`th_${index}`}>
-                              {th}
-                            </Th>
+                            <Tr key={`tr_${index}`}>
+                              {
+                                tr.map((td, index) => {
+                                  return (
+                                    <Td style={{ padding: "16px" }} key={`td_${index}`}>
+                                      {td}
+                                    </Td>
+                                  );
+                                })
+                              }
+                            </Tr>
                           );
                         })
                       }
-                    </Tr>
-                  </Thead>
-                  <Tbody>
-                    {
-                      getTableRows(tableData.result[0]).map((tr, index) => {
-                        return (
-                          <Tr key={`tr_${index}`}>
-                            {
-                              tr.map((td, index) => {
-                                return (
-                                  <Td style={{ padding: "16px" }} key={`td_${index}`}>
-                                    {td}
-                                  </Td>
-                                );
-                              })
-                            }
-                          </Tr>
-                        );
-                      })
-                    }
-                  </Tbody>
-                </Table>
-              </Box>
+                    </Tbody>
+                  </Table>
+                </Box>
+              }
             </div>
 
           }
